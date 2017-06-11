@@ -7,4 +7,9 @@ spec:
         imagePullPolicy: "IfNotPresent"
         name: "funktion"
         command: ["/bin/operator", "operate"]
+        env:
+        - name: "KUBERNETES_NAMESPACE"
+          valueFrom:
+            fieldRef:
+              fieldPath: "metadata.namespace"
       serviceAccountName: "funktion-operator"
