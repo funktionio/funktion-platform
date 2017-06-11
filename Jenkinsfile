@@ -1,30 +1,31 @@
 #!/usr/bin/groovy
 @Library('github.com/fabric8io/fabric8-pipeline-library@master')
+def stagedProject
 def utils = new io.fabric8.Utils()
-deployTemplate{
-  mavenNode {
-    ws{
-      checkout scm
+releaseNode {
+  checkout scm
+  readTrusted 'release.groovy'
 
-          if (utils.isCI()){
+  if (utils.isCI()){
 
-            echo 'CI is not handled by pipelines yet'
+    echo 'CI is not handled by pipelines yet'
 
-          } else if (utils.isCD()){
-            sh "git remote set-url origin git@github.com:funktionio/funktion-platform.git"
+  } else if (utils.isCD()){
 
-            def pipeline = load 'release.groovy'
-            def stagedProject
+    sh "git remote set-url origin git@github.com:funktionio/funktion-platform.git"
 
-            stage ('Stage'){
-              stagedProject = pipeline.stage()
-              releaseVersion = stagedProject[1]
-            }
+    def pipeline = load 'release.groovy'
 
-          stage ('Promote'){
-              pipeline.release(stagedProject)
-          }
-        }
+    stage ('Stage'){
+      stagedProject = pipeline.stage()
+    }
+    
+    stage ('Promote'){
+      pipeline.release(stagedProject)
+    }
+
+    stage ('Update downstream dependencies'){
+      pipeline.updateDownstreamDependencies(stagedProject)
     }
   }
 }

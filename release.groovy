@@ -1,19 +1,34 @@
 #!/usr/bin/groovy
+def imagesBuiltByPipeline() {
+  return []
+}
+
+def externalImages(){
+  return ['jenkins-jnlp-client','jenkins-docker']
+}
+
+def repo(){
+ return 'funktionio/funktion-platform'
+}
+
 def stage(){
   return stageProject{
-    project = 'funktionio/funktion-platform'
+    project = repo()
     useGitTagForNextVersion = true
+    extraImagesToStage = externalImages()
   }
 }
 
-def approveRelease(project){
-  def releaseVersion = project[1]
-  approve{
-    room = null
-    version = releaseVersion
-    console = null
-    environment = 'funktion'
+def updateDownstreamDependencies(stagedProject) {
+  /*
+  pushPomPropertyChangePR {
+    propertyName = 'fabric8-team-components.version'
+    projects = [
+            'fabric8io/fabric8-maven-dependencies'
+    ]
+    version = stagedProject[1]
   }
+  */
 }
 
 def release(project){
@@ -21,16 +36,15 @@ def release(project){
     stagedProject = project
     useGitTagForNextVersion = true
     helmPush = false
-    groupId = 'io.fabric8.funktion.distro'
+    groupId = 'io.fabric8.funktion.platform'
     githubOrganisation = 'funktionio'
-    artifactIdToWatchInCentral = 'distro'
+    artifactIdToWatchInCentral = 'parent'
     artifactExtensionToWatchInCentral = 'pom'
     promoteToDockerRegistry = 'docker.io'
     dockerOrganisation = 'funktion'
-    imagesToPromoteToDockerHub = []
-    extraImagesToTag = null
+    imagesToPromoteToDockerHub = imagesBuiltByPipeline()
+    extraImagesToTag = externalImages()
   }
 }
-
 
 return this;
