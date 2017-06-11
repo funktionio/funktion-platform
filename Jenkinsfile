@@ -7,10 +7,25 @@ deployTemplate{
       checkout scm
       sh "git remote set-url origin git@github.com:funktionio/funktion-platform.git"
 
-      def pipeline = load 'release.groovy'
+          if (utils.isCI()){
 
-      stage 'Promote'
-      pipeline.release(stagedProject)
+            echo 'CI is not handled by pipelines yet'
+
+          } else if (utils.isCD()){
+            sh "git remote set-url origin git@github.com:fabric8io/fabric8-online.git"
+
+            def pipeline = load 'release.groovy'
+            def stagedProject
+
+            stage ('Stage'){
+              stagedProject = pipeline.stage()
+              releaseVersion = stagedProject[1]
+            }
+
+          stage ('Promote'){
+              pipeline.release(stagedProject)
+          }
+        }
     }
   }
 }
