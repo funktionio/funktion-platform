@@ -5,14 +5,13 @@ deployTemplate{
   mavenNode {
     ws{
       checkout scm
-      sh "git remote set-url origin git@github.com:funktionio/funktion-platform.git"
 
           if (utils.isCI()){
 
             echo 'CI is not handled by pipelines yet'
 
           } else if (utils.isCD()){
-            sh "git remote set-url origin git@github.com:fabric8io/fabric8-online.git"
+            sh "git remote set-url origin git@github.com:funktionio/funktion-platform.git"
 
             def pipeline = load 'release.groovy'
             def stagedProject
