@@ -16,4 +16,5 @@ target
 *.iml
 .project
 .classpath
+.vscode
 .settings
