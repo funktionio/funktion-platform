@@ -1,7 +1,7 @@
 metadata:
-  name: exposecontroller-edit
+  name: funktion-operator-edit
 subjects:
 - kind: ServiceAccount
-  name: exposecontroller
+  name: funktion-operator
 roleRef:
   name: edit
