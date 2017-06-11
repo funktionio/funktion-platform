@@ -26,7 +26,7 @@
 
   <artifactId>funktion-operator</artifactId>
 
-  <name>Fabric8 Platform :: Apps :: Funktion Operator</name>
+  <name>Funktion Platform :: Apps :: Funktion Operator</name>
 
   <build>
     <plugins>
