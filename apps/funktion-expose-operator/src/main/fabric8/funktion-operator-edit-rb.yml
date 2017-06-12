@@ -1,0 +1,7 @@
+metadata:
+  name: funktion-operator-edit
+subjects:
+- kind: ServiceAccount
+  name: funktion-operator
+roleRef:
+  name: edit

@@ -18,15 +18,15 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <groupId>io.fabric8.funktion.packages</groupId>
-    <artifactId>packages</artifactId>
+    <groupId>io.fabric8.funktion.runtimes</groupId>
+    <artifactId>runtimes</artifactId>
     <version>3.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>funktion</artifactId>
+  <artifactId>nodejs</artifactId>
 
-  <name>Fabric8 Platform :: Packages :: Funktion</name>
+  <name>Funktion Platform :: Runtimes :: NodeJS</name>
 
   <build>
     <plugins>
@@ -42,20 +42,7 @@
             </excludes>
           </enricher>
         </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>io.fabric8.funktion.apps</groupId>
-            <artifactId>funktion-operator</artifactId>
-            <version>${project.version}</version>
-          </dependency>
-          <dependency>
-            <groupId>io.fabric8.funktion.runtimes</groupId>
-            <artifactId>nodejs</artifactId>
-            <version>${project.version}</version>
-          </dependency>
-        </dependencies>
       </plugin>
     </plugins>
   </build>
-
 </project>

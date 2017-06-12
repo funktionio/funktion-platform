@@ -1,0 +1,8 @@
+metadata:
+  name: exposecontroller
+  annotations:
+      fabric8.io/target-platform: "kubernetes"
+data:
+  config.yml: |
+    domain:
+    exposer:

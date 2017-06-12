@@ -5,6 +5,10 @@ spec:
       containers:
       - name: configmapcontroller
         image: fabric8/configmapcontroller:${configmapcontroller.version}
+        resources:
+          limits:
+            memory: '250Mi'
+            cpu: '250m'
         env:
         - name: "KUBERNETES_NAMESPACE"
           valueFrom:

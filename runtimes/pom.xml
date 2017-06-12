@@ -25,17 +25,14 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.fabric8.funktion.apps</groupId>
-  <artifactId>apps</artifactId>
+  <groupId>io.fabric8.funktion.runtimes</groupId>
+  <artifactId>runtimes</artifactId>
   <packaging>pom</packaging>
 
-  <name>Funktion :: Platform :: Apps</name>
+  <name>Funktion :: Platform :: Runtimes</name>
 
   <modules>
-    <module>configmapcontroller</module>
-    <module>exposecontroller</module>
-    <module>funktion-operator</module>
-    <module>funktion-expose-operator</module>
+    <module>nodejs</module>
   </modules>
 
   <build>

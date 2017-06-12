@@ -133,6 +133,7 @@
 
   <modules>
     <module>apps</module>
+    <module>runtimes</module>
     <module>packages</module>
   </modules>
 

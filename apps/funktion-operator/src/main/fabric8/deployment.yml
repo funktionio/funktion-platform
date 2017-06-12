@@ -7,6 +7,10 @@ spec:
         imagePullPolicy: "IfNotPresent"
         name: "funktion"
         command: ["/bin/operator", "operate"]
+        resources:
+          limits:
+            memory: '250Mi'
+            cpu: '250m'
         env:
         - name: "KUBERNETES_NAMESPACE"
           valueFrom:
