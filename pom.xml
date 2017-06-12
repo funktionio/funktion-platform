@@ -26,7 +26,7 @@
 
   <groupId>io.fabric8.funktion.platform</groupId>
   <artifactId>parent</artifactId>
-  <version>3.0-SNAPSHOT</version>
+  <version>3.0.2</version>
   <packaging>pom</packaging>
 
   <name>Funktion Platform :: Parent</name>
