@@ -35,7 +35,7 @@
     <module>configmapcontroller</module>
     <module>exposecontroller</module>
     <module>funktion-operator</module>
-    <module>funktion-expose-operator</module>
+    <module>funktion-combined-operator</module>
   </modules>
 
   <build>

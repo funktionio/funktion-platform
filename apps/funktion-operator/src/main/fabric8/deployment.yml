@@ -9,8 +9,8 @@ spec:
         command: ["/bin/operator", "operate"]
         resources:
           limits:
-            memory: '250Mi'
-            cpu: '250m'
+            memory: '${k8s.memory.limit}'
+            cpu: '${k8s.cpu.limit}'
         env:
         - name: "KUBERNETES_NAMESPACE"
           valueFrom:

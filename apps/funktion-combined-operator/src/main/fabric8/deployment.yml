@@ -12,8 +12,20 @@ spec:
         command: ["/bin/operator", "operate"]
         resources:
           limits:
-            memory: '300Mi'
-            cpu: '300m'
+            memory: '${k8s.memory.limit}'
+            cpu: '${k8s.cpu.limit}'
+        env:
+        - name: "KUBERNETES_NAMESPACE"
+          valueFrom:
+            fieldRef:
+              fieldPath: "metadata.namespace"
+      - name: configmapcontroller
+        image: fabric8/configmapcontroller:${configmapcontroller.version}
+        command: ["/configmapcontroller", "--healthz-port", "10354"]
+        resources:
+          limits:
+            memory: '${k8s.memory.limit}'
+            cpu: '${k8s.cpu.limit}'
         env:
         - name: "KUBERNETES_NAMESPACE"
           valueFrom:
@@ -21,16 +33,10 @@ spec:
               fieldPath: "metadata.namespace"
       - name: exposecontroller
         image: fabric8/exposecontroller:${exposecontroller.version}
-        livenessProbe:
-          exec:
-            command:
-            - cat
-            - /tmp/restarteveryday
-          initialDelaySeconds: 86164
         resources:
           limits:
-            memory: '250Mi'
-            cpu: '250m'
+            memory: '${k8s.memory.limit}'
+            cpu: '${k8s.cpu.limit}'
         env:
         - name: "KUBERNETES_NAMESPACE"
           valueFrom:

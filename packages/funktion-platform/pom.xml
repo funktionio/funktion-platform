@@ -44,9 +44,27 @@
           </enricher>
         </configuration>
         <dependencies>
+          <!-- lets default to a combined operator which is more likely to deploy on OpenShift with smaller quotas! -->
+          <dependency>
+            <groupId>io.fabric8.funktion.apps</groupId>
+            <artifactId>funktion-combined-operator</artifactId>
+            <version>${project.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>io.fabric8.funktion.runtimes</groupId>
+            <artifactId>nodejs</artifactId>
+            <version>${project.version}</version>
+          </dependency>
+
+<!-- microservice version
           <dependency>
             <groupId>io.fabric8.funktion.apps</groupId>
             <artifactId>exposecontroller</artifactId>
+            <version>${project.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>io.fabric8.funktion.apps</groupId>
+            <artifactId>configmapcontroller</artifactId>
             <version>${project.version}</version>
           </dependency>
           <dependency>
@@ -54,6 +72,8 @@
             <artifactId>funktion</artifactId>
             <version>${project.version}</version>
           </dependency>
+-->
+
         </dependencies>
       </plugin>
     </plugins>

@@ -33,8 +33,8 @@ data:
             imagePullPolicy: IfNotPresent
             resources:
               limits:
-                memory: '250Mi'
-                cpu: '250m'
+                memory: '${k8s.memory.limit}'
+                cpu: '${k8s.cpu.limit}'
             volumeMounts:
               - name: source
                 readOnly: true
@@ -84,8 +84,8 @@ data:
             imagePullPolicy: IfNotPresent
             resources:
               limits:
-                memory: '250Mi'
-                cpu: '250m'
+                memory: '${k8s.memory.limit}'
+                cpu: '${k8s.cpu.limit}'
             volumeMounts:
               - name: source
                 readOnly: true

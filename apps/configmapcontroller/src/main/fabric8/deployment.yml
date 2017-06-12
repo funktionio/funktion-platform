@@ -7,8 +7,8 @@ spec:
         image: fabric8/configmapcontroller:${configmapcontroller.version}
         resources:
           limits:
-            memory: '250Mi'
-            cpu: '250m'
+            memory: '${k8s.memory.limit}'
+            cpu: '${k8s.cpu.limit}'
         env:
         - name: "KUBERNETES_NAMESPACE"
           valueFrom:
